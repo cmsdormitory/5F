@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>明馬二樓積分兌換系統</title>
+    <title>明馬五樓積分兌換系統</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/quagga@0.12.1/dist/quagga.min.js"></script>
@@ -41,7 +41,7 @@
         }
         
         body {
-            background: linear-gradient(135deg, #a6d1ff 0%, #c2e9fb 100%);
+            background: linear-gradient(135deg, #fbc2de 0%, #fbc2f2 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -2301,8 +2301,8 @@
             <button class="theme-toggle" id="themeToggle">
                 <i class="fas fa-moon"></i>
             </button>
-            <h1>明馬二樓宿舍積分兌換系統</h1>
-            <p>明愛馬鞍山中學二樓宿舍專用</p>
+            <h1>明馬五樓宿舍積分兌換系統</h1>
+            <p>明愛馬鞍山中學五樓宿舍專用</p>
         </div>
         
         <!-- 系统公告区域 -->
@@ -3601,7 +3601,7 @@
                 from: 'wwlwcf002',
                 to: 'U1001',
                 subject: '歡迎使用積分系統',
-                content: '歡迎您使用明馬二樓積分兌換系統，如有任何問題請隨時聯繫我們。',
+                content: '歡迎您使用明馬五樓積分兌換系統，如有任何問題請隨時聯繫我們。',
                 timestamp: new Date('2023-10-01 09:00:00').getTime(),
                 read: true
             },
@@ -7238,7 +7238,7 @@
             const unreadMessages = messages.filter(m => !m.read).length;
             
             // 生成报告文本
-            let reportText = `明馬二樓積分系統統計報告\n`;
+            let reportText = `明馬五樓積分系統統計報告\n`;
             reportText += `生成時間: ${reportDate}\n\n`;
             reportText += `=== 基本統計 ===\n`;
             reportText += `總用戶數: ${totalUsers}\n`;
