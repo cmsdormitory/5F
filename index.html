@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>明馬五樓積分兌換系統</title>
+    <title>明馬二樓積分兌換系統</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/quagga@0.12.1/dist/quagga.min.js"></script>
@@ -41,7 +41,7 @@
         }
         
         body {
-            background: linear-gradient(135deg, #fbc2de 0%, #fbc2f2 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -1893,118 +1893,78 @@
         .login-history-item:hover {
             background: rgba(255, 255, 255, 0.2);
         }
-        
-        /* 新增：消息系统样式 */
-        .messages-tabs {
-            display: flex;
-            border-bottom: 1px solid var(--glass-border);
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .message-tab {
-            padding: 10px 20px;
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-            transition: all 0.3s;
-            border-radius: 8px 8px 0 0;
-            font-weight: 500;
-            color: var(--dark);
-        }
-        
-        .theme-dark .message-tab {
-            color: var(--text-color);
-        }
-        
-        .message-tab.active {
-            border-bottom: 3px solid rgba(37, 117, 252, 0.7);
-            color: var(--primary);
-            font-weight: 600;
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        .message-content {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .message-content.active {
-            display: block;
-        }
-        
-        .message-item {
-            background: rgba(255, 255, 255, 0.1);
+
+        /* 新增：活动管理样式 */
+        .event-card-user {
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 12px;
-            padding: 15px;
+            padding: 20px;
             margin-bottom: 15px;
-            transition: all 0.3s;
-            border-left: 4px solid #3498db;
-            cursor: pointer;
+            border-left: 5px solid var(--primary);
+            transition: transform 0.2s;
         }
         
-        .theme-dark .message-item {
+        .theme-dark .event-card-user {
             background: rgba(255, 255, 255, 0.05);
         }
-        
-        .message-item:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
+
+        .event-card-user:hover {
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.25);
         }
-        
-        .message-unread {
-            border-left: 4px solid var(--primary);
+
+        .event-time-display {
+            font-size: 1.1rem;
             font-weight: bold;
-        }
-        
-        .message-read {
-            border-left: 4px solid #95a5a6;
-            opacity: 0.8;
-        }
-        
-        .message-sender {
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: var(--primary);
-        }
-        
-        .message-date {
-            font-size: 0.8rem;
-            color: #666;
-            text-align: right;
-        }
-        
-        .theme-dark .message-date {
-            color: #ccc;
-        }
-        
-        .message-preview {
+            color: var(--secondary);
             margin: 10px 0;
-            font-size: 0.9rem;
-            color: #666;
-            line-height: 1.4;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        
-        .theme-dark .message-preview {
+
+        .event-location-display {
+            color: #555;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .theme-dark .event-location-display {
             color: #ccc;
         }
-        
-        .message-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
+
+        /* 参与者勾选列表样式 */
+        .participants-checkbox-list {
+            max-height: 150px;
+            overflow-y: auto;
+            border: 1px solid var(--glass-border);
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-bottom: 15px;
         }
-        
-        .unread-count {
-            display: inline-block;
-            background-color: var(--danger);
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            font-size: 0.7rem;
-            text-align: center;
-            line-height: 20px;
-            margin-left: 5px;
+
+        .theme-dark .participants-checkbox-list {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .participant-checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+
+        .participant-checkbox-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .participant-checkbox-item input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
         }
         
         /* 动画定义 */
@@ -2179,16 +2139,6 @@
                 align-items: flex-start;
                 gap: 10px;
             }
-            
-            .messages-tabs {
-                flex-direction: column;
-            }
-            
-            .message-tab {
-                flex: 1;
-                min-width: 100px;
-                text-align: center;
-            }
         }
     </style>
 </head>
@@ -2247,52 +2197,6 @@
         </div>
     </div>
     
-    <!-- 消息详情模态框 -->
-    <div class="modal" id="messageDetailModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>消息詳情</h3>
-                <button class="close-btn" id="closeMessageDetailModal">&times;</button>
-            </div>
-            <div id="messageDetailContent">
-                <!-- 消息详情将通过JavaScript动态生成 -->
-            </div>
-            <div id="messageReplySection" style="display: none; margin-top: 20px;">
-                <h4>回覆消息</h4>
-                <div class="form-group">
-                    <textarea id="messageReplyContent" class="form-control" rows="4" placeholder="輸入回覆內容"></textarea>
-                </div>
-                <button class="btn btn-success" id="sendMessageReplyBtn">發送回覆</button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- 发送消息模态框 -->
-    <div class="modal" id="sendMessageModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>發送消息</h3>
-                <button class="close-btn" id="closeSendMessageModal">&times;</button>
-            </div>
-            <div class="form-group">
-                <label for="messageRecipient">收件人</label>
-                <select id="messageRecipient" class="form-control">
-                    <option value="">-- 選擇收件人 --</option>
-                    <!-- 收件人列表将通过JavaScript动态生成 -->
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="messageSubject">消息標題</label>
-                <input type="text" id="messageSubject" class="form-control" placeholder="輸入消息標題">
-            </div>
-            <div class="form-group">
-                <label for="messageContent">消息內容</label>
-                <textarea id="messageContent" class="form-control" rows="6" placeholder="輸入消息內容"></textarea>
-            </div>
-            <button class="btn btn-success btn-block" id="sendMessageBtn">發送消息</button>
-        </div>
-    </div>
-    
     <!-- 落叶动画元素 -->
     <div id="leaves-container"></div>
     
@@ -2301,8 +2205,8 @@
             <button class="theme-toggle" id="themeToggle">
                 <i class="fas fa-moon"></i>
             </button>
-            <h1>明馬五樓宿舍積分兌換系統</h1>
-            <p>明愛馬鞍山中學五樓宿舍專用</p>
+            <h1>明馬二樓宿舍積分兌換系統</h1>
+            <p>明愛馬鞍山中學二樓宿舍專用</p>
         </div>
         
         <!-- 系统公告区域 -->
@@ -2434,10 +2338,10 @@
             
             <div class="tabs">
                 <div class="tab active" data-tab="prizes">獎品兌換</div>
+                <div class="tab" data-tab="events">我的活動</div>
                 <div class="tab" data-tab="history">積分歷史</div>
                 <div class="tab" data-tab="leaderboard">排行榜</div>
                 <div class="tab" data-tab="achievements">成就系統</div>
-                <div class="tab" data-tab="messages">消息系統<span id="unreadMessagesCount" class="unread-count" style="display: none;">0</span></div>
                 <div class="tab" data-tab="notifications">通知設定</div>
                 <div class="tab" data-tab="feedback">反饋系統</div>
             </div>
@@ -2449,6 +2353,15 @@
                 </div>
             </div>
             
+            <!-- 新增：用户端“我的活動”标签页 -->
+            <div class="tab-content" id="events-tab">
+                <h3 style="margin-bottom: 15px;">我的活動</h3>
+                <div id="userEventsList">
+                    <!-- 用户参加的活动将通过JavaScript动态生成 -->
+                    <p style="text-align: center; color: #999;">您尚未參加任何活動</p>
+                </div>
+            </div>
+
             <div class="tab-content" id="history-tab">
                 <h3 style="margin-bottom: 15px;">積分歷史紀錄</h3>
                 <div id="userHistoryContent">
@@ -2506,67 +2419,6 @@
                 </div>
                 <div class="achievements-grid" id="achievementsGrid">
                     <!-- 成就将通过JavaScript动态生成 -->
-                </div>
-            </div>
-            
-            <!-- 新增：消息系统 -->
-            <div class="tab-content" id="messages-tab">
-                <h3 style="margin-bottom: 15px;">消息系統</h3>
-                
-                <div class="messages-tabs">
-                    <div class="message-tab active" data-message-tab="inbox">收件箱<span id="inboxUnreadCount" class="unread-count" style="display: none;">0</span></div>
-                    <div class="message-tab" data-message-tab="sent">已發送</div>
-                    <div class="message-tab" data-message-tab="compose">撰寫消息</div>
-                </div>
-                
-                <div class="message-content active" id="inbox-content">
-                    <div class="search-box" style="margin-bottom: 20px;">
-                        <input type="text" id="searchInbox" class="form-control" placeholder="搜索收件箱消息">
-                        <button class="btn" id="searchInboxBtn">搜索</button>
-                    </div>
-                    
-                    <div id="inboxMessagesList">
-                        <!-- 收件箱消息将通过JavaScript动态生成 -->
-                    </div>
-                </div>
-                
-                <div class="message-content" id="sent-content">
-                    <div class="search-box" style="margin-bottom: 20px;">
-                        <input type="text" id="searchSent" class="form-control" placeholder="搜索已發送消息">
-                        <button class="btn" id="searchSentBtn">搜索</button>
-                    </div>
-                    
-                    <div id="sentMessagesList">
-                        <!-- 已发送消息将通过JavaScript动态生成 -->
-                    </div>
-                </div>
-                
-                <div class="message-content" id="compose-content">
-                    <div class="form-group">
-                        <label for="composeRecipient">收件人</label>
-                        <select id="composeRecipient" class="form-control">
-                            <option value="">-- 選擇收件人 --</option>
-                            <!-- 收件人列表将通过JavaScript动态生成 -->
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="composeSubject">消息標題</label>
-                        <input type="text" id="composeSubject" class="form-control" placeholder="輸入消息標題">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="composeContent">消息內容</label>
-                        <textarea id="composeContent" class="form-control" rows="8" placeholder="輸入消息內容"></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="composeAttachment">附件（可選）</label>
-                        <input type="file" id="composeAttachment" class="form-control">
-                    </div>
-                    
-                    <button class="btn btn-success" id="sendComposeMessageBtn">發送消息</button>
-                    <button class="btn btn-secondary" id="saveDraftBtn">保存草稿</button>
                 </div>
             </div>
             
@@ -2633,6 +2485,7 @@
             <div class="tabs">
                 <div class="tab active" data-tab="users">用戶管理</div>
                 <div class="tab" data-tab="prizes-admin">獎品管理</div>
+                <div class="tab" data-tab="events-admin">活動管理</div>
                 <div class="tab" data-tab="history-admin">積分歷史</div>
                 <div class="tab" data-tab="leaderboard-admin">排行榜</div>
                 <div class="tab" data-tab="stats-admin">統計報告</div>
@@ -2760,6 +2613,30 @@
                     </thead>
                     <tbody id="prizesTableBody">
                         <!-- 奖品数据将通过JavaScript动态生成 -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 新增：管理员端“活动管理”标签页 -->
+            <div class="tab-content" id="events-admin-tab">
+                <div class="admin-controls">
+                    <button class="btn btn-success" id="addEventBtn" style="align-self: flex-end;">添加新活動</button>
+                </div>
+                
+                <h3>活動列表</h3>
+                <table class="users-table" id="eventsTableAdmin">
+                    <thead>
+                        <tr>
+                            <th>活動ID</th>
+                            <th>活動名稱</th>
+                            <th>時間 (星期X)</th>
+                            <th>地點</th>
+                            <th>參與人數</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="eventsTableBodyAdmin">
+                        <!-- 活动数据将通过JavaScript动态生成 -->
                     </tbody>
                 </table>
             </div>
@@ -3205,10 +3082,6 @@
                         <div class="stat-value" id="systemMails">0</div>
                         <div class="stat-label">郵件數量</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="systemMessages">0</div>
-                        <div class="stat-label">消息數量</div>
-                    </div>
                 </div>
             </div>
             
@@ -3264,6 +3137,54 @@
             </div>
             <input type="hidden" id="editPrizeId">
             <button class="btn btn-success btn-block" id="confirmEditPrize">确认修改</button>
+        </div>
+    </div>
+
+    <!-- 新增：添加/编辑活动模态框 -->
+    <div class="modal" id="addEventModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="eventModalTitle">活動管理</h3>
+                <button class="close-btn" id="closeAddEventModal">&times;</button>
+            </div>
+            <input type="hidden" id="editEventId">
+            
+            <div class="form-group">
+                <label for="eventName">活動名稱</label>
+                <input type="text" id="eventName" class="form-control" placeholder="例如：晨練">
+            </div>
+            
+            <div class="form-group">
+                <label for="eventDay">星期</label>
+                <select id="eventDay" class="form-control">
+                    <option value="星期一">星期一</option>
+                    <option value="星期二">星期二</option>
+                    <option value="星期三">星期三</option>
+                    <option value="星期四">星期四</option>
+                    <option value="星期五">星期五</option>
+                    <option value="星期六">星期六</option>
+                    <option value="星期日">星期日</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="eventTime">時間</label>
+                <input type="time" id="eventTime" class="form-control" value="07:00">
+            </div>
+            
+            <div class="form-group">
+                <label for="eventLocation">活動地點</label>
+                <input type="text" id="eventLocation" class="form-control" placeholder="例如：操場">
+            </div>
+            
+            <div class="form-group">
+                <label>參與人員</label>
+                <div class="participants-checkbox-list" id="participantsList">
+                    <!-- 动态生成的用户勾选列表 -->
+                </div>
+            </div>
+            
+            <button class="btn btn-success btn-block" id="confirmSaveEvent">保存活動</button>
         </div>
     </div>
     
@@ -3409,8 +3330,7 @@
                 pointsChange: true,
                 newPrizeAvailable: true,
                 systemAnnouncement: true,
-                levelUp: true,
-                newMessage: true
+                levelUp: true
             }
         };
         
@@ -3444,8 +3364,7 @@
                     pointsChange: true,
                     newPrizeAvailable: true,
                     systemAnnouncement: true,
-                    levelUp: true,
-                    newMessage: true
+                    levelUp: true
                 }
             },
             { 
@@ -3476,8 +3395,7 @@
                     pointsChange: true,
                     newPrizeAvailable: false,
                     systemAnnouncement: true,
-                    levelUp: true,
-                    newMessage: true
+                    levelUp: true
                 }
             },
             { 
@@ -3508,8 +3426,7 @@
                     pointsChange: false,
                     newPrizeAvailable: true,
                     systemAnnouncement: false,
-                    levelUp: true,
-                    newMessage: true
+                    levelUp: true
                 }
             },
             { 
@@ -3530,8 +3447,7 @@
                     pointsChange: true,
                     newPrizeAvailable: true,
                     systemAnnouncement: true,
-                    levelUp: true,
-                    newMessage: true
+                    levelUp: true
                 }
             }
         ];
@@ -3568,6 +3484,26 @@
             { userId: 'wwlwcf002', timestamp: new Date('2023-10-11 16:30:00').getTime(), loginType: 'adminCode' }
         ];
         
+        // 新增：活动数据存储
+        let events = JSON.parse(localStorage.getItem('barcodePointsEvents')) || [
+            { 
+                id: 'E001', 
+                name: '晨跑', 
+                day: '星期一', 
+                time: '07:00', 
+                location: '操場', 
+                participants: ['U1001', 'U1002'] 
+            },
+            { 
+                id: 'E002', 
+                name: '讀書會', 
+                day: '星期三', 
+                time: '19:00', 
+                location: '圖書館', 
+                participants: ['U1001', 'U1003'] 
+            }
+        ];
+
         // 新增：反馈系统数据
         let feedbackList = JSON.parse(localStorage.getItem('barcodePointsFeedback')) || [
             { 
@@ -3601,7 +3537,7 @@
                 from: 'wwlwcf002',
                 to: 'U1001',
                 subject: '歡迎使用積分系統',
-                content: '歡迎您使用明馬五樓積分兌換系統，如有任何問題請隨時聯繫我們。',
+                content: '歡迎您使用明馬二樓積分兌換系統，如有任何問題請隨時聯繫我們。',
                 timestamp: new Date('2023-10-01 09:00:00').getTime(),
                 read: true
             },
@@ -3613,40 +3549,6 @@
                 content: '感謝您提出的寶貴建議，我們會認真考慮並在後續版本中改進。',
                 timestamp: new Date('2023-10-12 16:00:00').getTime(),
                 read: false
-            }
-        ];
-        
-        // 新增：消息系统数据
-        let messages = JSON.parse(localStorage.getItem('barcodePointsMessages')) || [
-            { 
-                id: 'MSG001',
-                from: 'U1001',
-                to: 'U1002',
-                subject: '你好',
-                content: '你好，最近怎麼樣？',
-                timestamp: new Date('2023-10-10 10:30:00').getTime(),
-                read: true,
-                replyTo: null
-            },
-            { 
-                id: 'MSG002',
-                from: 'U1002',
-                to: 'U1001',
-                subject: '回覆：你好',
-                content: '我很好，謝謝關心！你最近怎麼樣？',
-                timestamp: new Date('2023-10-10 14:20:00').getTime(),
-                read: false,
-                replyTo: 'MSG001'
-            },
-            { 
-                id: 'MSG003',
-                from: 'wwlwcf002',
-                to: 'U1001',
-                subject: '系統通知',
-                content: '您的積分已更新，請查看積分歷史。',
-                timestamp: new Date('2023-10-15 09:00:00').getTime(),
-                read: false,
-                replyTo: null
             }
         ];
         
@@ -3871,36 +3773,19 @@
         const userLevelProgress = document.getElementById('userLevelProgress');
         const levelProgressText = document.getElementById('levelProgressText');
         const levelProgressFill = document.getElementById('levelProgressFill');
-        
-        // 消息系统元素
-        const messageDetailModal = document.getElementById('messageDetailModal');
-        const closeMessageDetailModal = document.getElementById('closeMessageDetailModal');
-        const messageDetailContent = document.getElementById('messageDetailContent');
-        const messageReplySection = document.getElementById('messageReplySection');
-        const messageReplyContent = document.getElementById('messageReplyContent');
-        const sendMessageReplyBtn = document.getElementById('sendMessageReplyBtn');
-        const sendMessageModal = document.getElementById('sendMessageModal');
-        const closeSendMessageModal = document.getElementById('closeSendMessageModal');
-        const messageRecipient = document.getElementById('messageRecipient');
-        const messageSubject = document.getElementById('messageSubject');
-        const messageContent = document.getElementById('messageContent');
-        const sendMessageBtn = document.getElementById('sendMessageBtn');
-        
-        // 用户消息页面元素
-        const inboxMessagesList = document.getElementById('inboxMessagesList');
-        const sentMessagesList = document.getElementById('sentMessagesList');
-        const composeRecipient = document.getElementById('composeRecipient');
-        const composeSubject = document.getElementById('composeSubject');
-        const composeContent = document.getElementById('composeContent');
-        const composeAttachment = document.getElementById('composeAttachment');
-        const sendComposeMessageBtn = document.getElementById('sendComposeMessageBtn');
-        const saveDraftBtn = document.getElementById('saveDraftBtn');
-        const searchInbox = document.getElementById('searchInbox');
-        const searchInboxBtn = document.getElementById('searchInboxBtn');
-        const searchSent = document.getElementById('searchSent');
-        const searchSentBtn = document.getElementById('searchSentBtn');
-        const unreadMessagesCount = document.getElementById('unreadMessagesCount');
-        const inboxUnreadCount = document.getElementById('inboxUnreadCount');
+
+        // 活动相关DOM元素
+        const addEventBtn = document.getElementById('addEventBtn');
+        const addEventModal = document.getElementById('addEventModal');
+        const closeAddEventModal = document.getElementById('closeAddEventModal');
+        const eventModalTitle = document.getElementById('eventModalTitle');
+        const eventName = document.getElementById('eventName');
+        const eventDay = document.getElementById('eventDay');
+        const eventTime = document.getElementById('eventTime');
+        const eventLocation = document.getElementById('eventLocation');
+        const editEventId = document.getElementById('editEventId');
+        const participantsList = document.getElementById('participantsList');
+        const confirmSaveEvent = document.getElementById('confirmSaveEvent');
         
         // 管理员新增DOM元素
         const pointsTrendChart = document.getElementById('pointsTrendChart');
@@ -4010,10 +3895,6 @@
         // 公告历史元素
         const announcementsList = document.getElementById('announcementsList');
         
-        // 消息系统元素
-        const messageTabs = document.querySelectorAll('.message-tab');
-        const messageContents = document.querySelectorAll('.message-content');
-        
         // 当前登录的用户和管理员
         let currentUser = null;
         let currentAdmin = false;
@@ -4023,7 +3904,6 @@
         let pieChartAnimations = {};
         let achievementNotificationTimeout = null;
         let charts = {};
-        let messageDrafts = JSON.parse(localStorage.getItem('barcodePointsMessageDrafts')) || {};
         
         // 修复条形码生成函数
         function generateBarcode(code, container) {
@@ -4325,6 +4205,7 @@
             
             // 保存初始数据到localStorage
             saveDataToStorage();
+            saveEventsToStorage(); // 保存活动数据
             saveConfigToStorage();
             
             // 检查并显示公告
@@ -4336,7 +4217,6 @@
             renderPrizesTable();
             setupTabs();
             setupLoginOptions();
-            setupMessageTabs();
             updateSystemStats();
             
             // 加载系统配置到界面
@@ -4780,40 +4660,6 @@
                 feedbackDetailModal.style.display = 'none';
             });
             
-            // 消息系统事件
-            closeMessageDetailModal.addEventListener('click', function() {
-                messageDetailModal.style.display = 'none';
-            });
-            
-            sendMessageReplyBtn.addEventListener('click', function() {
-                sendMessageReply();
-            });
-            
-            closeSendMessageModal.addEventListener('click', function() {
-                sendMessageModal.style.display = 'none';
-            });
-            
-            sendMessageBtn.addEventListener('click', function() {
-                sendMessageFromModal();
-            });
-            
-            // 用户消息页面事件
-            sendComposeMessageBtn.addEventListener('click', function() {
-                sendComposeMessage();
-            });
-            
-            saveDraftBtn.addEventListener('click', function() {
-                saveMessageDraft();
-            });
-            
-            searchInboxBtn.addEventListener('click', function() {
-                renderInboxMessages();
-            });
-            
-            searchSentBtn.addEventListener('click', function() {
-                renderSentMessages();
-            });
-            
             // 管理员新功能事件绑定
             generateStatsReportBtn.addEventListener('click', function() {
                 generateDetailedStatsReport();
@@ -4890,34 +4736,18 @@
             clearLoginHistoryBtn.addEventListener('click', function() {
                 clearLoginHistory();
             });
-        }
-        
-        // 设置消息选项卡
-        function setupMessageTabs() {
-            messageTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    // 移除所有active类
-                    messageTabs.forEach(t => t.classList.remove('active'));
-                    messageContents.forEach(c => c.classList.remove('active'));
-                    
-                    // 添加active类到当前选项卡
-                    this.classList.add('active');
-                    const tabId = this.getAttribute('data-message-tab');
-                    document.getElementById(`${tabId}-content`).classList.add('active');
-                    
-                    // 根据选项卡类型执行相应操作
-                    switch(tabId) {
-                        case 'inbox':
-                            renderInboxMessages();
-                            break;
-                        case 'sent':
-                            renderSentMessages();
-                            break;
-                        case 'compose':
-                            renderComposeMessage();
-                            break;
-                    }
-                });
+
+            // 活动管理事件
+            addEventBtn.addEventListener('click', function() {
+                openAddEventModal();
+            });
+
+            closeAddEventModal.addEventListener('click', function() {
+                addEventModal.style.display = 'none';
+            });
+
+            confirmSaveEvent.addEventListener('click', function() {
+                saveEventFromModal();
             });
         }
         
@@ -5014,16 +4844,15 @@
                         case 'history':
                             renderUserHistory();
                             break;
+                        case 'events':
+                            renderUserEvents(); // 渲染用户活动
+                            break;
                         case 'leaderboard':
                             renderUserLeaderboard();
                             renderTierPieChartWithAnimation(tierPieChart, pieLegend);
                             break;
                         case 'achievements':
                             renderAchievements();
-                            break;
-                        case 'messages':
-                            renderInboxMessages();
-                            updateUnreadMessagesCount();
                             break;
                         case 'notifications':
                             renderNotificationPreferences();
@@ -5052,6 +4881,9 @@
                     switch(tabId) {
                         case 'history-admin':
                             renderAdminHistory();
+                            break;
+                        case 'events-admin':
+                            renderAdminEventsTable(); // 渲染管理员活动列表
                             break;
                         case 'leaderboard-admin':
                             renderAdminLeaderboard();
@@ -5293,9 +5125,6 @@
             // 更新成就统计
             updateAchievementStats();
             
-            // 更新未读消息计数
-            updateUnreadMessagesCount();
-            
             // 更新最后活动时间
             currentUser.lastActive = new Date().getTime();
             saveDataToStorage();
@@ -5491,6 +5320,177 @@
                 prizesTableBody.appendChild(row);
             });
         }
+
+        // ==================== 活动管理逻辑 (新增) ====================
+
+        // 打开添加/编辑活动模态框
+        function openAddEventModal(eventId = null) {
+            addEventModal.style.display = 'flex';
+            
+            // 动态生成参与者勾选列表
+            participantsList.innerHTML = '';
+            users.filter(u => !u.isAdmin).forEach(user => {
+                const item = document.createElement('div');
+                item.className = 'participant-checkbox-item';
+                item.innerHTML = `
+                    <label style="width: 100%; cursor: pointer;">
+                        <input type="checkbox" class="participant-checkbox" value="${user.id}">
+                        ${user.name} (${user.id})
+                    </label>
+                `;
+                participantsList.appendChild(item);
+            });
+
+            if (eventId) {
+                // 编辑模式
+                const event = events.find(e => e.id === eventId);
+                eventModalTitle.textContent = '編輯活動';
+                editEventId.value = eventId;
+                eventName.value = event.name;
+                eventDay.value = event.day;
+                eventTime.value = event.time;
+                eventLocation.value = event.location;
+                
+                // 勾选已有参与者
+                const checkboxes = document.querySelectorAll('.participant-checkbox');
+                checkboxes.forEach(cb => {
+                    if (event.participants.includes(cb.value)) {
+                        cb.checked = true;
+                    }
+                });
+            } else {
+                // 新增模式
+                eventModalTitle.textContent = '添加新活動';
+                editEventId.value = '';
+                eventName.value = '';
+                eventDay.value = '星期一';
+                eventTime.value = '07:00';
+                eventLocation.value = '';
+                
+                // 清空勾选
+                const checkboxes = document.querySelectorAll('.participant-checkbox');
+                checkboxes.forEach(cb => cb.checked = false);
+            }
+        }
+
+        // 保存活动（新增或编辑）
+        function saveEventFromModal() {
+            const name = eventName.value.trim();
+            const day = eventDay.value;
+            const time = eventTime.value;
+            const location = eventLocation.value.trim();
+            const id = editEventId.value;
+
+            if (!name || !location) {
+                showNotification('請填寫活動名稱和地點', 'error');
+                return;
+            }
+
+            // 获取选中的参与者
+            const selectedParticipants = [];
+            document.querySelectorAll('.participant-checkbox:checked').forEach(cb => {
+                selectedParticipants.push(cb.value);
+            });
+
+            if (id) {
+                // 编辑现有活动
+                const event = events.find(e => e.id === id);
+                if (event) {
+                    event.name = name;
+                    event.day = day;
+                    event.time = time;
+                    event.location = location;
+                    event.participants = selectedParticipants;
+                    showNotification('活動更新成功', 'success');
+                }
+            } else {
+                // 创建新活动
+                const newEvent = {
+                    id: generateEventId(),
+                    name: name,
+                    day: day,
+                    time: time,
+                    location: location,
+                    participants: selectedParticipants
+                };
+                events.push(newEvent);
+                showNotification('活動添加成功', 'success');
+            }
+
+            saveEventsToStorage();
+            addEventModal.style.display = 'none';
+            renderAdminEventsTable();
+        }
+
+        // 渲染管理员活动表格
+        function renderAdminEventsTable() {
+            const tbody = document.getElementById('eventsTableBodyAdmin');
+            tbody.innerHTML = '';
+
+            if (events.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align: center;">暂無活動數據</td></tr>';
+                return;
+            }
+
+            events.forEach(event => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${event.id}</td>
+                    <td>${event.name}</td>
+                    <td>${event.day} ${event.time}</td>
+                    <td>${event.location}</td>
+                    <td>${event.participants.length} 人</td>
+                    <td>
+                        <button class="action-btn" style="background: #3498db;" onclick="openAddEventModal('${event.id}')">編輯</button>
+                        <button class="action-btn" style="background: #e74c3c;" onclick="deleteEvent('${event.id}')">刪除</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // 删除活动
+        function deleteEvent(eventId) {
+            if (confirm('確定要刪除此活動嗎？')) {
+                events = events.filter(e => e.id !== eventId);
+                saveEventsToStorage();
+                renderAdminEventsTable();
+                showNotification('活動已刪除', 'success');
+            }
+        }
+
+        // 渲染用户“我的活动”列表
+        function renderUserEvents() {
+            const container = document.getElementById('userEventsList');
+            container.innerHTML = '';
+
+            // 筛选出当前用户参与的活动
+            const myEvents = events.filter(e => e.participants.includes(currentUser.id));
+
+            if (myEvents.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #999; margin-top: 20px;">您尚未參加任何活動。</p>';
+                return;
+            }
+
+            myEvents.forEach(event => {
+                const card = document.createElement('div');
+                card.className = 'event-card-user';
+                card.innerHTML = `
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <h4 style="color: var(--primary);">${event.name}</h4>
+                        <span class="badge">${event.day}</span>
+                    </div>
+                    <div class="event-time-display">
+                        <i class="fas fa-clock"></i> ${event.time}
+                    </div>
+                    <div class="event-location-display">
+                        <i class="fas fa-map-marker-alt"></i> ${event.location}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+        // ==================== 活动管理逻辑结束 ====================
         
         // 渲染用户积分历史
         function renderUserHistory() {
@@ -5739,381 +5739,6 @@
             achievementsGrid.appendChild(achievementCard);
         }
         
-        // 渲染收件箱消息
-        function renderInboxMessages() {
-            inboxMessagesList.innerHTML = '';
-            
-            if (!currentUser) return;
-            
-            const searchTerm = searchInbox.value.toLowerCase();
-            
-            // 获取当前用户的收件箱消息
-            let inboxMessages = messages.filter(message => message.to === currentUser.id)
-                .sort((a, b) => b.timestamp - a.timestamp);
-            
-            // 应用搜索过滤
-            if (searchTerm) {
-                inboxMessages = inboxMessages.filter(message => 
-                    message.subject.toLowerCase().includes(searchTerm) || 
-                    message.content.toLowerCase().includes(searchTerm) ||
-                    message.from.toLowerCase().includes(searchTerm)
-                );
-            }
-            
-            if (inboxMessages.length === 0) {
-                inboxMessagesList.innerHTML = '<p>暫無消息</p>';
-                return;
-            }
-            
-            inboxMessages.forEach(message => {
-                const sender = users.find(u => u.id === message.from);
-                const senderName = sender ? sender.name : '未知用户';
-                const messageItem = document.createElement('div');
-                messageItem.className = `message-item ${message.read ? 'message-read' : 'message-unread'}`;
-                messageItem.onclick = () => viewMessageDetail(message.id);
-                
-                const date = formatDate(message.timestamp);
-                const preview = message.content.length > 100 ? message.content.substring(0, 100) + '...' : message.content;
-                
-                messageItem.innerHTML = `
-                    <div class="message-sender">${senderName} (${message.from})</div>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <div><strong>${message.subject}</strong></div>
-                        <div class="message-date">${date}</div>
-                    </div>
-                    <div class="message-preview">${preview}</div>
-                    ${!message.read ? '<div style="color: var(--primary); font-size: 0.8rem;">新消息</div>' : ''}
-                `;
-                
-                inboxMessagesList.appendChild(messageItem);
-            });
-            
-            // 更新未读消息计数
-            updateUnreadMessagesCount();
-        }
-        
-        // 渲染已发送消息
-        function renderSentMessages() {
-            sentMessagesList.innerHTML = '';
-            
-            if (!currentUser) return;
-            
-            const searchTerm = searchSent.value.toLowerCase();
-            
-            // 获取当前用户的已发送消息
-            let sentMessages = messages.filter(message => message.from === currentUser.id)
-                .sort((a, b) => b.timestamp - a.timestamp);
-            
-            // 应用搜索过滤
-            if (searchTerm) {
-                sentMessages = sentMessages.filter(message => 
-                    message.subject.toLowerCase().includes(searchTerm) || 
-                    message.content.toLowerCase().includes(searchTerm) ||
-                    message.to.toLowerCase().includes(searchTerm)
-                );
-            }
-            
-            if (sentMessages.length === 0) {
-                sentMessagesList.innerHTML = '<p>暫無已發送消息</p>';
-                return;
-            }
-            
-            sentMessages.forEach(message => {
-                const recipient = users.find(u => u.id === message.to);
-                const recipientName = recipient ? recipient.name : '未知用户';
-                const messageItem = document.createElement('div');
-                messageItem.className = 'message-item message-read';
-                messageItem.onclick = () => viewMessageDetail(message.id);
-                
-                const date = formatDate(message.timestamp);
-                const preview = message.content.length > 100 ? message.content.substring(0, 100) + '...' : message.content;
-                
-                messageItem.innerHTML = `
-                    <div class="message-sender">收件人: ${recipientName} (${message.to})</div>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <div><strong>${message.subject}</strong></div>
-                        <div class="message-date">${date}</div>
-                    </div>
-                    <div class="message-preview">${preview}</div>
-                `;
-                
-                sentMessagesList.appendChild(messageItem);
-            });
-        }
-        
-        // 渲染撰写消息页面
-        function renderComposeMessage() {
-            if (!currentUser) return;
-            
-            // 清空收件人列表
-            composeRecipient.innerHTML = '<option value="">-- 選擇收件人 --</option>';
-            
-            // 添加所有用户（除了自己）
-            users.filter(u => u.id !== currentUser.id).forEach(user => {
-                const option = document.createElement('option');
-                option.value = user.id;
-                option.textContent = `${user.name} (${user.id})`;
-                composeRecipient.appendChild(option);
-            });
-            
-            // 加载草稿（如果有）
-            const draft = messageDrafts[currentUser.id];
-            if (draft) {
-                composeRecipient.value = draft.recipient || '';
-                composeSubject.value = draft.subject || '';
-                composeContent.value = draft.content || '';
-            } else {
-                composeRecipient.value = '';
-                composeSubject.value = '';
-                composeContent.value = '';
-            }
-        }
-        
-        // 发送撰写消息
-        function sendComposeMessage() {
-            if (!currentUser) {
-                showNotification('請先登錄', 'error');
-                return;
-            }
-            
-            const recipientId = composeRecipient.value;
-            const subject = composeSubject.value.trim();
-            const content = composeContent.value.trim();
-            
-            if (!recipientId || !subject || !content) {
-                showNotification('請填寫收件人、標題和內容', 'error');
-                return;
-            }
-            
-            // 检查收件人是否存在
-            const recipient = users.find(u => u.id === recipientId);
-            if (!recipient) {
-                showNotification('收件人不存在', 'error');
-                return;
-            }
-            
-            // 生成消息ID
-            const messageId = generateMessageId();
-            
-            // 创建消息对象
-            const newMessage = {
-                id: messageId,
-                from: currentUser.id,
-                to: recipientId,
-                subject: subject,
-                content: content,
-                timestamp: new Date().getTime(),
-                read: false,
-                replyTo: null
-            };
-            
-            // 添加到消息列表
-            messages.push(newMessage);
-            saveMessagesToStorage();
-            
-            // 清空表单
-            composeRecipient.value = '';
-            composeSubject.value = '';
-            composeContent.value = '';
-            
-            // 删除草稿
-            delete messageDrafts[currentUser.id];
-            saveMessageDraftsToStorage();
-            
-            // 切换到已发送选项卡
-            document.querySelector('[data-message-tab="sent"]').click();
-            
-            showNotification('消息發送成功', 'success');
-            
-            // 检查收件人的通知偏好
-            if (recipient.notificationPreferences && recipient.notificationPreferences.newMessage) {
-                // 在实际应用中，这里可以发送推送通知
-                console.log(`用戶 ${recipient.name} 有新消息通知`);
-            }
-        }
-        
-        // 保存消息草稿
-        function saveMessageDraft() {
-            if (!currentUser) {
-                showNotification('請先登錄', 'error');
-                return;
-            }
-            
-            const recipientId = composeRecipient.value;
-            const subject = composeSubject.value.trim();
-            const content = composeContent.value.trim();
-            
-            // 保存草稿
-            messageDrafts[currentUser.id] = {
-                recipient: recipientId,
-                subject: subject,
-                content: content,
-                timestamp: new Date().getTime()
-            };
-            
-            saveMessageDraftsToStorage();
-            showNotification('草稿已保存', 'success');
-        }
-        
-        // 查看消息详情
-        function viewMessageDetail(messageId) {
-            const message = messages.find(m => m.id === messageId);
-            
-            if (!message) return;
-            
-            const sender = users.find(u => u.id === message.from);
-            const recipient = users.find(u => u.id === message.to);
-            const senderName = sender ? sender.name : '未知用户';
-            const recipientName = recipient ? recipient.name : '未知用户';
-            const date = formatDate(message.timestamp);
-            
-            // 标记为已读
-            if (!message.read && currentUser && message.to === currentUser.id) {
-                message.read = true;
-                saveMessagesToStorage();
-                renderInboxMessages();
-                updateUnreadMessagesCount();
-            }
-            
-            messageDetailContent.innerHTML = `
-                <h4>${message.subject}</h4>
-                <div style="margin: 15px 0; padding: 15px; background: rgba(255, 255, 255, 0.1); border-radius: 10px;">
-                    <div style="margin-bottom: 10px;">
-                        <p><strong>發件人:</strong> ${senderName} (${message.from})</p>
-                        <p><strong>收件人:</strong> ${recipientName} (${message.to})</p>
-                        <p><strong>發送時間:</strong> ${date}</p>
-                    </div>
-                    <div style="padding: 15px; background: rgba(255, 255, 255, 0.05); border-radius: 5px; margin-top: 15px;">
-                        ${message.content.replace(/\n/g, '<br>')}
-                    </div>
-                </div>
-            `;
-            
-            // 如果当前用户是收件人，显示回复按钮
-            if (currentUser && message.to === currentUser.id) {
-                messageReplySection.style.display = 'block';
-                messageReplyContent.value = '';
-                messageDetailModal.setAttribute('data-reply-to', messageId);
-            } else {
-                messageReplySection.style.display = 'none';
-            }
-            
-            messageDetailModal.style.display = 'flex';
-        }
-        
-        // 发送消息回复
-        function sendMessageReply() {
-            if (!currentUser) {
-                showNotification('請先登錄', 'error');
-                return;
-            }
-            
-            const replyToId = messageDetailModal.getAttribute('data-reply-to');
-            const replyToMessage = messages.find(m => m.id === replyToId);
-            
-            if (!replyToMessage) return;
-            
-            const content = messageReplyContent.value.trim();
-            
-            if (!content) {
-                showNotification('請輸入回覆內容', 'error');
-                return;
-            }
-            
-            // 生成消息ID
-            const messageId = generateMessageId();
-            
-            // 创建回复消息对象
-            const replyMessage = {
-                id: messageId,
-                from: currentUser.id,
-                to: replyToMessage.from,
-                subject: `回覆: ${replyToMessage.subject}`,
-                content: content,
-                timestamp: new Date().getTime(),
-                read: false,
-                replyTo: replyToId
-            };
-            
-            // 添加到消息列表
-            messages.push(replyMessage);
-            saveMessagesToStorage();
-            
-            // 关闭模态框
-            messageDetailModal.style.display = 'none';
-            
-            // 切换到已发送选项卡
-            document.querySelector('[data-message-tab="sent"]').click();
-            
-            showNotification('回覆已發送', 'success');
-        }
-        
-        // 发送消息（从模态框）
-        function sendMessageFromModal() {
-            const recipientId = messageRecipient.value;
-            const subject = messageSubject.value.trim();
-            const content = messageContent.value.trim();
-            
-            if (!recipientId || !subject || !content) {
-                showNotification('請填寫收件人、標題和內容', 'error');
-                return;
-            }
-            
-            // 检查收件人是否存在
-            const recipient = users.find(u => u.id === recipientId);
-            if (!recipient) {
-                showNotification('收件人不存在', 'error');
-                return;
-            }
-            
-            // 生成消息ID
-            const messageId = generateMessageId();
-            
-            // 创建消息对象
-            const newMessage = {
-                id: messageId,
-                from: currentAdminId,
-                to: recipientId,
-                subject: subject,
-                content: content,
-                timestamp: new Date().getTime(),
-                read: false,
-                replyTo: null
-            };
-            
-            // 添加到消息列表
-            messages.push(newMessage);
-            saveMessagesToStorage();
-            
-            // 清空表单
-            messageRecipient.value = '';
-            messageSubject.value = '';
-            messageContent.value = '';
-            
-            // 关闭模态框
-            sendMessageModal.style.display = 'none';
-            
-            showNotification('消息發送成功', 'success');
-        }
-        
-        // 更新未读消息计数
-        function updateUnreadMessagesCount() {
-            if (!currentUser) return;
-            
-            const unreadCount = messages.filter(m => m.to === currentUser.id && !m.read).length;
-            
-            if (unreadCount > 0) {
-                unreadMessagesCount.textContent = unreadCount;
-                unreadMessagesCount.style.display = 'inline-block';
-                
-                inboxUnreadCount.textContent = unreadCount;
-                inboxUnreadCount.style.display = 'inline-block';
-            } else {
-                unreadMessagesCount.style.display = 'none';
-                inboxUnreadCount.style.display = 'none';
-            }
-        }
-        
         // 渲染通知偏好设置
         function renderNotificationPreferences() {
             notificationPreferences.innerHTML = '';
@@ -6131,8 +5756,7 @@
                 { id: 'pointsChange', label: '積分變動通知', description: '當您的積分發生變動時接收通知' },
                 { id: 'newPrizeAvailable', label: '新獎品通知', description: '當有新獎品上架時接收通知' },
                 { id: 'systemAnnouncement', label: '系統公告通知', description: '當有新的系統公告時接收通知' },
-                { id: 'levelUp', label: '等級提升通知', description: '當您提升等級時接收通知' },
-                { id: 'newMessage', label: '新消息通知', description: '當您收到新消息時接收通知' }
+                { id: 'levelUp', label: '等級提升通知', description: '當您提升等級時接收通知' }
             ];
             
             preferences.forEach(pref => {
@@ -6160,7 +5784,7 @@
             if (!currentUser) return;
             
             // 收集所有偏好设置
-            const preferences = ['achievementUnlock', 'pointsChange', 'newPrizeAvailable', 'systemAnnouncement', 'levelUp', 'newMessage'];
+            const preferences = ['achievementUnlock', 'pointsChange', 'newPrizeAvailable', 'systemAnnouncement', 'levelUp'];
             
             preferences.forEach(prefId => {
                 const checkbox = document.getElementById(`pref_${prefId}`);
@@ -6947,7 +6571,6 @@
             document.getElementById('systemAdmins').textContent = users.filter(u => u.isAdmin).length;
             document.getElementById('systemFeedback').textContent = feedbackList.length;
             document.getElementById('systemMails').textContent = mailList.length;
-            document.getElementById('systemMessages').textContent = messages.length;
             
             updateUserStats();
         }
@@ -7233,20 +6856,14 @@
                 .sort((a, b) => b.exchangeCount - a.exchangeCount)
                 .slice(0, 3);
             
-            // 消息统计
-            const totalMessages = messages.length;
-            const unreadMessages = messages.filter(m => !m.read).length;
-            
             // 生成报告文本
-            let reportText = `明馬五樓積分系統統計報告\n`;
+            let reportText = `明馬二樓積分系統統計報告\n`;
             reportText += `生成時間: ${reportDate}\n\n`;
             reportText += `=== 基本統計 ===\n`;
             reportText += `總用戶數: ${totalUsers}\n`;
             reportText += `總積分: ${totalPoints}\n`;
             reportText += `平均積分: ${avgPoints}\n`;
-            reportText += `總兌換次數: ${totalExchanges}\n`;
-            reportText += `總消息數: ${totalMessages}\n`;
-            reportText += `未讀消息: ${unreadMessages}\n\n`;
+            reportText += `總兌換次數: ${totalExchanges}\n\n`;
             
             reportText += `=== 段位分布 ===\n`;
             Object.keys(tierDistribution).forEach(tier => {
@@ -7274,7 +6891,6 @@
             reportText += `反饋數量: ${feedbackList.length}\n`;
             reportText += `郵件數量: ${mailList.length}\n`;
             reportText += `登錄歷史數量: ${loginHistory.length}\n`;
-            reportText += `消息數量: ${messages.length}\n`;
             
             // 创建报告文件
             const dataStr = reportText;
@@ -7563,68 +7179,6 @@
             if (!currentUser) return;
             
             // 确保用户有成就数据
-            if (!currentUser.achievements) user.achievements = [];
-            if (!user.achievementData) user.achievementData = {};
-            
-            achievements.forEach(achievement => {
-                const achievementData = achievement.getData ? achievement.getData(user) : {};
-                const isUnlocked = achievement.condition(user, achievementData);
-                
-                // 检查是否已解锁但未记录
-                if (isUnlocked && !user.achievementData[achievement.id]) {
-                    // 添加到成就列表
-                    if (!user.achievements.includes(achievement.name)) {
-                        user.achievements.push(achievement.name);
-                        newAchievements.push(achievement);
-                    }
-                    
-                    // 标记为已解锁
-                    user.achievementData[achievement.id] = true;
-                    
-                    // 注意：不再给予积分奖励
-                    // 更新成就称号
-                    updateUserAchievementTitle(user);
-                }
-            });
-            
-            // 如果有新成就，显示通知
-            if (newAchievements.length > 0) {
-                // 保存数据
-                saveDataToStorage();
-                
-                // 如果当前用户是成就获得者，显示通知
-                if (currentUser && currentUser.id === user.id) {
-                    // 显示第一个新成就的通知
-                    showAchievementNotification(newAchievements[0]);
-                    
-                    // 如果有多个新成就，稍后显示下一个
-                    if (newAchievements.length > 1) {
-                        setTimeout(() => {
-                            showAchievementNotification(newAchievements[1]);
-                        }, 4500);
-                    }
-                    
-                    // 如果用户在成就页面，刷新显示
-                    if (document.getElementById('achievements-tab').classList.contains('active')) {
-                        renderAchievements();
-                        updateAchievementStats();
-                    }
-                    
-                    // 如果用户已登录，更新界面显示
-                    if (currentUser && currentUser.id === user.id) {
-                        document.getElementById('dashboardUserAchievementTitle').textContent = user.achievementTitle;
-                    }
-                }
-            }
-            
-            return newAchievements;
-        }
-        
-        // 更新成就统计
-        function updateAchievementStats() {
-            if (!currentUser) return;
-            
-            // 确保用户有成就数据
             if (!currentUser.achievements) currentUser.achievements = [];
             if (!currentUser.achievementData) currentUser.achievementData = {};
             
@@ -7639,180 +7193,6 @@
             document.getElementById('achievementUnlocked').textContent = unlockedCount;
             document.getElementById('achievementTotal').textContent = totalCount;
             document.getElementById('achievementProgress').textContent = `${progressPercentage}%`;
-        }
-        
-        // 显示成就解锁通知
-        function showAchievementNotification(achievement) {
-            // 检查用户的通知偏好
-            if (currentUser && currentUser.notificationPreferences && !currentUser.notificationPreferences.achievementUnlock) {
-                return;
-            }
-            
-            achievementNotificationName.textContent = achievement.name;
-            achievementNotificationDesc.textContent = achievement.description;
-            achievementNotificationReward.textContent = achievement.reward;
-            
-            // 设置图标
-            const iconElement = achievementNotification.querySelector('.achievement-notification-icon i');
-            iconElement.className = `fas ${achievement.icon}`;
-            
-            // 显示通知
-            achievementNotification.classList.add('unlocked');
-            
-            // 播放声音（如果有的话）
-            playAchievementSound();
-            
-            // 4秒后自动隐藏
-            if (achievementNotificationTimeout) {
-                clearTimeout(achievementNotificationTimeout);
-            }
-            
-            achievementNotificationTimeout = setTimeout(() => {
-                achievementNotification.classList.remove('unlocked');
-            }, 4000);
-        }
-        
-        // 播放成就解锁声音
-        function playAchievementSound() {
-            // 这里可以添加音效，如果需要的话
-        }
-        
-        // 更新用户成就称号
-        function updateUserAchievementTitle(user) {
-            // 检查是否完成了全成就
-            const allAchievementsData = achievements.find(a => a.id === 'all_achievements').getData(user);
-            const hasAllAchievements = achievements.find(a => a.id === 'all_achievements').condition(user, allAchievementsData);
-            
-            if (hasAllAchievements) {
-                user.achievementTitle = '🏆全成就大師🏆';
-            } else {
-                // 如果没有全成就，显示最近解锁的成就
-                const unlockedAchievements = achievements.filter(achievement => {
-                    const achievementData = achievement.getData ? achievement.getData(user) : {};
-                    return achievement.condition(user, achievementData);
-                });
-                
-                if (unlockedAchievements.length > 0) {
-                    // 取最后一个解锁的成就作为称号
-                    const latestAchievement = unlockedAchievements[unlockedAchievements.length - 1];
-                    user.achievementTitle = latestAchievement.name;
-                } else {
-                    user.achievementTitle = '無';
-                }
-            }
-            
-            return user.achievementTitle;
-        }
-        
-        // 修复条形码生成函数
-        function generateBarcode(code, container) {
-            container.innerHTML = '';
-            
-            if (!code || code.trim() === '') {
-                container.innerHTML = '<div class="barcode-placeholder">条形码编码为空</div>';
-                return;
-            }
-            
-            try {
-                // 创建canvas元素
-                const canvas = document.createElement('canvas');
-                container.appendChild(canvas);
-                
-                // 使用JsBarcode生成条形码
-                JsBarcode(canvas, code, {
-                    format: "CODE128",
-                    width: 2,
-                    height: 100,
-                    displayValue: true,
-                    fontOptions: "bold",
-                    fontSize: 16,
-                    textMargin: 10,
-                    margin: 10,
-                    background: "#ffffff",
-                    lineColor: "#000000"
-                });
-                
-                console.log('QRcode生成成功:', code);
-            } catch (error) {
-                console.error('QRcode生成失敗:', error);
-                container.innerHTML = '<div class="barcode-placeholder">QRcode生成失敗: ' + error.message + '</div>';
-            }
-        }
-        
-        // 计算用户段位
-        function calculateUserTier(totalPoints) {
-            for (const tier of systemConfig.tierThresholds) {
-                if (totalPoints >= tier.min && totalPoints <= tier.max) {
-                    return tier.name;
-                }
-            }
-            return '青銅';
-        }
-        
-        // 计算用户等级 - 修复为250积分升一级
-        function calculateUserLevel(totalPoints) {
-            const levelIncrement = systemConfig.levelIncrement || 250; // 修改为250
-            const maxLevel = systemConfig.maxLevel || 10;
-            
-            // 计算等级（从1级开始，每250累积积分升一级）
-            const level = Math.floor(totalPoints / levelIncrement) + 1;
-            
-            // 限制最高等级
-            return Math.min(level, maxLevel);
-        }
-        
-        // 获取等级进度
-        function getLevelProgress(totalPoints) {
-            const levelIncrement = systemConfig.levelIncrement || 250; // 修改为250
-            const currentLevel = calculateUserLevel(totalPoints);
-            const pointsForCurrentLevel = (currentLevel - 1) * levelIncrement;
-            const pointsForNextLevel = currentLevel * levelIncrement;
-            const pointsInLevel = totalPoints - pointsForCurrentLevel;
-            
-            return {
-                currentLevel,
-                pointsInLevel,
-                pointsForNextLevel,
-                progressPercentage: Math.min(100, (pointsInLevel / levelIncrement) * 100),
-                nextLevelPointsNeeded: pointsForNextLevel - totalPoints
-            };
-        }
-        
-        // 获取段位对应的CSS类名
-        function getTierClass(tierName) {
-            switch(tierName) {
-                case '王者': return 'tier-king';
-                case '鑽石': return 'tier-diamond';
-                case '鉑金': return 'tier-platinum';
-                case '黃金': return 'tier-gold';
-                case '白銀': return 'tier-silver';
-                case '青銅': return 'tier-bronze';
-                default: return 'tier-bronze';
-            }
-        }
-        
-        // 获取段位对应的颜色
-        function getTierColor(tierName) {
-            for (const tier of systemConfig.tierThresholds) {
-                if (tier.name === tierName) {
-                    return tier.color;
-                }
-            }
-            return 'brown';
-        }
-        
-        // 获取等级对应的CSS类名
-        function getLevelClass(level) {
-            if (level >= 10) return 'level-10';
-            if (level >= 9) return 'level-9';
-            if (level >= 8) return 'level-8';
-            if (level >= 7) return 'level-7';
-            if (level >= 6) return 'level-6';
-            if (level >= 5) return 'level-5';
-            if (level >= 4) return 'level-4';
-            if (level >= 3) return 'level-3';
-            if (level >= 2) return 'level-2';
-            return 'level-1';
         }
         
         // 导出用户数据
@@ -7860,8 +7240,11 @@
                 users: users,
                 prizes: prizes,
                 history: pointsHistory,
-                messages: messages,
+                loginHistory: loginHistory,
+                feedback: feedbackList,
+                mails: mailList,
                 announcements: announcementsHistory,
+                events: events,
                 config: systemConfig,
                 exportDate: new Date().toISOString()
             };
@@ -7929,9 +7312,21 @@
                     if (importedData.history && Array.isArray(importedData.history)) {
                         pointsHistory = importedData.history;
                     }
+
+                    if (importedData.events && Array.isArray(importedData.events)) {
+                        events = importedData.events;
+                    }
                     
-                    if (importedData.messages && Array.isArray(importedData.messages)) {
-                        messages = importedData.messages;
+                    if (importedData.loginHistory && Array.isArray(importedData.loginHistory)) {
+                        loginHistory = importedData.loginHistory;
+                    }
+                    
+                    if (importedData.feedback && Array.isArray(importedData.feedback)) {
+                        feedbackList = importedData.feedback;
+                    }
+                    
+                    if (importedData.mails && Array.isArray(importedData.mails)) {
+                        mailList = importedData.mails;
                     }
                     
                     if (importedData.announcements && Array.isArray(importedData.announcements)) {
@@ -7943,12 +7338,16 @@
                     }
                     
                     saveDataToStorage();
-                    saveMessagesToStorage();
+                    saveEventsToStorage();
+                    saveLoginHistoryToStorage();
+                    saveFeedbackToStorage();
+                    saveMailToStorage();
                     saveAnnouncementsToStorage();
                     saveConfigToStorage();
                     renderUsersTable();
                     renderPrizesTable();
                     renderPrizes();
+                    renderAdminEventsTable();
                     updateSystemStats();
                     loadConfigToUI();
                     
@@ -8007,9 +7406,9 @@
             if (confirm('确定要重置所有系統數據吗？此操作将删除所有用户、獎品和歷史紀錄，且不可恢复！')) {
                 users = [
                     { 
-                        id: 'ADMIN001', 
+                        id: 'wwlwcf002', 
                         name: '管理员', 
-                        barcodeCode: 'ADMIN001', 
+                        barcodeCode: 'wwlwcf002', 
                         points: 0, 
                         totalPoints: 0,
                         tier: '',
@@ -8024,15 +7423,22 @@
                 ];
                 prizes = [];
                 pointsHistory = [];
-                messages = [];
+                loginHistory = [];
+                feedbackList = [];
+                mailList = [];
                 announcementsHistory = [];
+                events = []; // 清空活动
                 
                 saveDataToStorage();
-                saveMessagesToStorage();
+                saveEventsToStorage();
+                saveLoginHistoryToStorage();
+                saveFeedbackToStorage();
+                saveMailToStorage();
                 saveAnnouncementsToStorage();
                 renderUsersTable();
                 renderPrizesTable();
                 renderPrizes();
+                renderAdminEventsTable(); // 刷新活动列表
                 updateSystemStats();
                 
                 showNotification('系統數據已重置', 'success');
@@ -8062,18 +7468,26 @@
             const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
             return `${prefix}${timestamp}${random}`;
         }
+
+        // 生成随机活动ID
+        function generateEventId() {
+            const prefix = 'E';
+            const timestamp = new Date().getTime().toString().slice(-4);
+            const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+            return `${prefix}${timestamp}${random}`;
+        }
         
-        // 生成随机消息ID
-        function generateMessageId() {
-            const prefix = 'MSG';
+        // 生成随机反馈ID
+        function generateFeedbackId() {
+            const prefix = 'F';
             const timestamp = new Date().getTime().toString().slice(-6);
             const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
             return `${prefix}${timestamp}${random}`;
         }
         
-        // 生成随机对话ID
-        function generateThreadId() {
-            const prefix = 'THREAD';
+        // 生成随机邮件ID
+        function generateMailId() {
+            const prefix = 'M';
             const timestamp = new Date().getTime().toString().slice(-6);
             const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
             return `${prefix}${timestamp}${random}`;
@@ -8120,10 +7534,25 @@
             localStorage.setItem('barcodePointsPrizes', JSON.stringify(prizes));
             localStorage.setItem('barcodePointsHistory', JSON.stringify(pointsHistory));
         }
+
+        // 保存活动数据到本地存储 (新增)
+        function saveEventsToStorage() {
+            localStorage.setItem('barcodePointsEvents', JSON.stringify(events));
+        }
         
-        // 保存消息数据到本地存储
-        function saveMessagesToStorage() {
-            localStorage.setItem('barcodePointsMessages', JSON.stringify(messages));
+        // 保存登录历史到本地存储
+        function saveLoginHistoryToStorage() {
+            localStorage.setItem('barcodePointsLoginHistory', JSON.stringify(loginHistory));
+        }
+        
+        // 保存反馈数据到本地存储
+        function saveFeedbackToStorage() {
+            localStorage.setItem('barcodePointsFeedback', JSON.stringify(feedbackList));
+        }
+        
+        // 保存邮件数据到本地存储
+        function saveMailToStorage() {
+            localStorage.setItem('barcodePointsMails', JSON.stringify(mailList));
         }
         
         // 保存公告历史到本地存储
@@ -8157,37 +7586,25 @@
         // 确保JsBarcode库已加载
         function checkBarcodeLibrary() {
             if (typeof JsBarcode === 'undefined') {
-                console.error('JsBarcode library not loaded!');
-                return false;
+                console.error('JsBarcode库未正确加载');
+                // 尝试重新加载
+                const script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js';
+                script.onload = function() {
+                    console.log('JsBarcode库重新加载成功');
+                    initPage();
+                };
+                document.head.appendChild(script);
+            } else {
+                console.log('JsBarcode库已加载');
+                initPage();
             }
-            return true;
         }
-        
-        // 初始化页面
-        document.addEventListener('DOMContentLoaded', function() {
-            // 检查必要的库是否已加载
-            if (!checkBarcodeLibrary()) {
-                showNotification('QRcode生成庫加載失敗，請刷新頁面重試', 'error');
-                return;
-            }
-            
-            initPage();
+
+        // 在页面加载时检查
+        window.addEventListener('load', function() {
+            checkBarcodeLibrary();
         });
-        
-        // 使一些函数在全局可用
-        window.selectUser = selectUser;
-        window.promoteUser = promoteUser;
-        window.demoteUser = demoteUser;
-        window.deleteUser = deleteUser;
-        window.editPrize = editPrize;
-        window.deletePrize = deletePrize;
-        window.openRedeemConfirm = openRedeemConfirm;
-        window.viewMessageDetail = viewMessageDetail;
-        window.markMessageAsRead = markMessageAsRead;
-        window.replyToMessage = replyToMessage;
-        window.viewAdminMessageDetail = viewAdminMessageDetail;
-        window.markAdminMessageAsRead = markAdminMessageAsRead;
-        window.deleteMessage = deleteMessage;
     </script>
 </body>
 </html>
